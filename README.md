@@ -17,10 +17,12 @@ Preparation & Compile
 /> mvn package
 ~~~
 
-The jar file will be available under 'dependency' folder and can be included into your project. However we do not recommend this as the sole purpose of this mini project is to serve as an example only.
+The jar file will be available under 'dependency' folder and can be included into your project. However please do it at your own risks as this mini project only serves as a sole example.
 
-Run
+Run the example Main class
 --------------------------------
+This class show a few call
 ~~~
-/> java -cp "target/*:target/dependency/*" SMSGlobalRESTClientMain
+/> java -cp "target/*:target/dependency/*" SMSGlobalRESTClientMain <APIKey> <Secret>
 ~~~
+*Note: Replace <APIKey> and <Secret> with your own.
