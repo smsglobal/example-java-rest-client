@@ -25,4 +25,4 @@ This class show a few call
 ~~~
 /> java -cp "target/*:target/dependency/*" SMSGlobalRESTClientMain <APIKey> <Secret>
 ~~~
-*Note: Replace <APIKey> and <Secret> with your own.
+*Note: Replace \<APIKey\> and \<Secret\> with your own.
