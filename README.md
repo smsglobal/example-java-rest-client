@@ -11,6 +11,7 @@ Preparation & Compile
 --------------------------------
  - Download & Install Maven at http://maven.apache.org/download.cgi
  - Using your commandline console, type the following commands 
+
 ~~~
 /> mvn dependency:copy-dependencies
 /> mvn package
