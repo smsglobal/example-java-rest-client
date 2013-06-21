@@ -2,11 +2,22 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import java.security.SecureRandom;
+import java.net.HttpURLConnection;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
+import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.HttpsURLConnection;
 
 public class SMSGlobalUtil {
 
@@ -144,7 +155,6 @@ public class SMSGlobalUtil {
 		sb.append(extraData);
 		sb.append("\n");
 
-System.out.println('"'+sb.toString()+'"');
 		return sb.toString();
 
 	}
@@ -188,5 +198,33 @@ System.out.println('"'+sb.toString()+'"');
 
 		return Base64.encodeBase64String(mac.doFinal(data.getBytes()));
 	}
+    
+    /**
+     * While not recommended, you can also disable SSL cert validation alltogether:
+     */
+    public static void disableCertificateValidation() {
+        // Create a trust manager that does not validate certificate chains
+        TrustManager[] trustAllCerts = new TrustManager[] { 
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() { 
+                    return new X509Certificate[0]; 
+                }
+                public void checkClientTrusted(X509Certificate[] certs, String authType) {}
+                public void checkServerTrusted(X509Certificate[] certs, String authType) {}
+            }};
+        
+        // Ignore differences between given hostname and certificate hostname
+        HostnameVerifier hv = new HostnameVerifier() {
+            public boolean verify(String hostname, SSLSession session) { return true; }
+        };
+        
+        // Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, trustAllCerts, new SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+            HttpsURLConnection.setDefaultHostnameVerifier(hv);
+        } catch (Exception e) {}
+    }    
 
 }
