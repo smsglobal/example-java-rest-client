@@ -461,9 +461,9 @@ public class SMSGlobalRESTClient {
 	 * @return the balance
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	public String getBalance(String countryCode) throws SMSGlobalRestClientException {
+	public String getBalance(String countryCode) throws SMSGlobalRestClientException 
+    {
 		return getData(BALANCE_URI_PREFIX+"?countryCode="+countryCode);
-
 	}
 
 	/**
@@ -474,7 +474,8 @@ public class SMSGlobalRESTClient {
 	 * @return the string
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private String postData(String uri, String input) throws  SMSGlobalRestClientException {
+	private String postData(String uri, String input) throws  SMSGlobalRestClientException 
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -493,7 +494,6 @@ public class SMSGlobalRESTClient {
 		}
 
 		return response.getEntity(String.class);
-
 	}
 
 
@@ -504,8 +504,8 @@ public class SMSGlobalRESTClient {
 	 * @return the data
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private String getData(String uri) throws  SMSGlobalRestClientException {
-
+	private String getData(String uri) throws  SMSGlobalRestClientException 
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -537,8 +537,8 @@ public class SMSGlobalRESTClient {
 	 * @return the data
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private String getData(String uri, String id) throws  SMSGlobalRestClientException {
-
+	private String getData(String uri, String id) throws  SMSGlobalRestClientException
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -569,8 +569,8 @@ public class SMSGlobalRESTClient {
 	 * @return the data
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private String getData(String uri, int id) throws  SMSGlobalRestClientException {
-
+	private String getData(String uri, int id) throws  SMSGlobalRestClientException 
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -601,7 +601,8 @@ public class SMSGlobalRESTClient {
 	 * @param id the id
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private void deleteData(String uri, String id) throws  SMSGlobalRestClientException  {
+	private void deleteData(String uri, String id) throws  SMSGlobalRestClientException  
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -629,7 +630,8 @@ public class SMSGlobalRESTClient {
 	 * @param id the id
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
-	private void deleteData(String uri, int id) throws SMSGlobalRestClientException  {
+	private void deleteData(String uri, int id) throws SMSGlobalRestClientException  
+    {
 		String urlString = "";
 		String header = "";
 		String requestUri = "";
@@ -657,11 +659,17 @@ public class SMSGlobalRESTClient {
 	 * @param header the header
 	 * @return the client response
 	 */
-	private ClientResponse get(String urlString, String header) {
-		ClientResponse response = null;
+	private ClientResponse get(String urlString, String header) 
+    {
+        if (this.protocol.equalsIgnoreCase("HTTPS")) {
+            // WARNING THIS SHOULD NOT BE USED IN PRODUCTION
+            SMSGlobalUtil.disableCertificateValidation();    
+        }
 
-		if(isDebug)
+		ClientResponse response = null;
+		if(isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
+        }
 
 		WebResource webResource = client.resource(UriBuilder.fromUri(urlString).build());
 		response = webResource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).header(HttpHeaders.AUTHORIZATION, header).get(ClientResponse.class);
@@ -677,14 +685,20 @@ public class SMSGlobalRESTClient {
 	 * @param input the input
 	 * @return the client response
 	 */
-	private ClientResponse post(String urlString, String header, String input) {
-		ClientResponse response = null;
+	private ClientResponse post(String urlString, String header, String input) 
+    {      
+        if (this.protocol.equalsIgnoreCase("HTTPS")) {
+            // WARNING THIS SHOULD NOT BE USED IN PRODUCTION
+            SMSGlobalUtil.disableCertificateValidation();    
+        }
 
+		ClientResponse response = null;
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 
-		if(isDebug)
+		if(isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
+        }
 
 		WebResource webResource = client.resource(UriBuilder.fromUri(urlString).build());
 		response = webResource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).header(HttpHeaders.AUTHORIZATION, header).post(ClientResponse.class, input);
@@ -699,15 +713,21 @@ public class SMSGlobalRESTClient {
 	 * @param header the header
 	 * @return the client response
 	 */
-	private ClientResponse delete(String urlString, String header) {
-		ClientResponse response = null;
+	private ClientResponse delete(String urlString, String header) 
+    {
+        if (this.protocol.equalsIgnoreCase("HTTPS")) {
+            // WARNING THIS SHOULD NOT BE USED IN PRODUCTION
+            SMSGlobalUtil.disableCertificateValidation();    
+        }
 
+		ClientResponse response = null;
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 
-		if(isDebug)
+		if(isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
-
+        }
+        
 		WebResource webResource = client.resource(UriBuilder.fromUri(urlString).build());
 		response = webResource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).header(HttpHeaders.AUTHORIZATION, header).delete(ClientResponse.class);
 
