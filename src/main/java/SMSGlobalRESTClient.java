@@ -109,7 +109,7 @@ public class SMSGlobalRESTClient {
 		this.apiVersion = apiVersion;
 		this.isDebug = isDebug;
 
-		smsglobalUtil = new SMSGlobalUtil(secret);
+		this.smsglobalUtil = new SMSGlobalUtil(secret);
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class SMSGlobalRESTClient {
 		this.apiVersion = "/v1";
 		this.isDebug = isDebug;
 
-		smsglobalUtil = new SMSGlobalUtil(secret);
+		this.smsglobalUtil = new SMSGlobalUtil(secret);
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String sendSMS(String input) throws SMSGlobalRestClientException{
 
-		return postData(SMS_URI_PREFIX, input);
+		return this.postData(SMS_URI_PREFIX, input);
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String getSMS() throws SMSGlobalRestClientException {
 
-		return getData(SMS_URI_PREFIX);
+		return this.getData(SMS_URI_PREFIX);
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String getSMS(String messageId) throws SMSGlobalRestClientException {
 
-		return getData(SMS_URI_PREFIX, messageId);
+		return this.getData(SMS_URI_PREFIX, messageId);
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String getIncomingSMS() throws SMSGlobalRestClientException {
 
-		return getData(INCOMING_URI_PREFIX);
+		return this.getData(INCOMING_URI_PREFIX);
 
 	}
 
@@ -203,7 +203,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String getIncomingSMS(String id) throws SMSGlobalRestClientException {
 
-		return getData(INCOMING_URI_PREFIX, id);
+		return this.getData(INCOMING_URI_PREFIX, id);
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getContacts() throws  SMSGlobalRestClientException {
-		return getData(CONTACT_URI_PREFIX);
+		return this.getData(CONTACT_URI_PREFIX);
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getContact(String id) throws  SMSGlobalRestClientException {
-		return getData(CONTACT_URI_PREFIX, id);
+		return this.getData(CONTACT_URI_PREFIX, id);
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String addContact(String input) throws  SMSGlobalRestClientException {
-		return postData(CONTACT_URI_PREFIX, input);
+		return this.postData(CONTACT_URI_PREFIX, input);
 	}
 
 	/**
@@ -256,7 +256,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getGroups() throws  SMSGlobalRestClientException {
-		return getData(GROUP_URI_PREFIX);
+		return this.getData(GROUP_URI_PREFIX);
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getGroup(String id) throws  SMSGlobalRestClientException {
-		return getData(GROUP_URI_PREFIX, id);
+		return this.getData(GROUP_URI_PREFIX, id);
 	}
 
 	/**
@@ -278,7 +278,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String addGroup(String input) throws  SMSGlobalRestClientException {
-		return postData(GROUP_URI_PREFIX, input);
+		return this.postData(GROUP_URI_PREFIX, input);
 	}
 
 	/**
@@ -288,7 +288,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getScheduledMessages() throws  SMSGlobalRestClientException {
-		return getData(SCHEDULED_URI_PREFIX);
+		return this.getData(SCHEDULED_URI_PREFIX);
 	}
 
 	/**
@@ -299,7 +299,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getScheduledMessage(String id) throws  SMSGlobalRestClientException {
-		return getData(SCHEDULED_URI_PREFIX, id);
+		return this.getData(SCHEDULED_URI_PREFIX, id);
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String addScheduledMessage(String input) throws  SMSGlobalRestClientException {
-		return postData(SCHEDULED_URI_PREFIX, input);
+		return this.postData(SCHEDULED_URI_PREFIX, input);
 	}
 
 	/**
@@ -320,7 +320,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public void deleteScheduledMessage(String id) throws  SMSGlobalRestClientException {
-		deleteData(SCHEDULED_URI_PREFIX, id);
+		this.deleteData(SCHEDULED_URI_PREFIX, id);
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getDedicatedNumbers() throws  SMSGlobalRestClientException {
-		return getData(DEDICATED_URI_PREFIX);
+		return this.getData(DEDICATED_URI_PREFIX);
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getDedicatedNumber(String id) throws  SMSGlobalRestClientException {
-		return getData(DEDICATED_URI_PREFIX, id);
+		return this.getData(DEDICATED_URI_PREFIX, id);
 	}
 
     /**
@@ -352,7 +352,7 @@ public class SMSGlobalRESTClient {
      */
     public String getLookups() throws SMSGlobalRestClientException {
 
-		return getData(LOOKUP_URI_PREFIX);
+		return this.getData(LOOKUP_URI_PREFIX);
 
 	}
 
@@ -387,7 +387,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getChildAccounts() throws  SMSGlobalRestClientException {
-		return getData(CHILD_ACCOUNT_URI_PREFIX);
+		return this.getData(CHILD_ACCOUNT_URI_PREFIX);
 	}
 
 	/**
@@ -398,7 +398,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getChildAccount(String id) throws  SMSGlobalRestClientException {
-		return getData(CHILD_ACCOUNT_URI_PREFIX, id);
+		return this.getData(CHILD_ACCOUNT_URI_PREFIX, id);
 	}
 
 	/**
@@ -409,7 +409,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String createChildAccount(String input) throws  SMSGlobalRestClientException {
-		return postData(CHILD_ACCOUNT_URI_PREFIX, input);
+		return this.postData(CHILD_ACCOUNT_URI_PREFIX, input);
 	}
 
 	/**
@@ -419,7 +419,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getTemplates() throws  SMSGlobalRestClientException {
-		return getData(TEMPLATE_URI_PREFIX);
+		return this.getData(TEMPLATE_URI_PREFIX);
 	}
 
 	/**
@@ -430,7 +430,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getTemplate(String id) throws  SMSGlobalRestClientException {
-		return getData(TEMPLATE_URI_PREFIX, id);
+		return this.getData(TEMPLATE_URI_PREFIX, id);
 	}
 
 	/**
@@ -441,7 +441,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String createTemplate(String input) throws  SMSGlobalRestClientException {
-		return postData(TEMPLATE_URI_PREFIX, input);
+		return this.postData(TEMPLATE_URI_PREFIX, input);
 	}
 
 	/**
@@ -451,7 +451,7 @@ public class SMSGlobalRESTClient {
 	 * @throws SMSGlobalRestClientException the rest client exception
 	 */
 	public String getBalance() throws SMSGlobalRestClientException {
-		return getData(BALANCE_URI_PREFIX);
+		return this.getData(BALANCE_URI_PREFIX);
 	}
 
 	/**
@@ -463,7 +463,7 @@ public class SMSGlobalRESTClient {
 	 */
 	public String getBalance(String countryCode) throws SMSGlobalRestClientException 
     {
-		return getData(BALANCE_URI_PREFIX+"?countryCode="+countryCode);
+		return this.getData(BALANCE_URI_PREFIX+"?countryCode="+countryCode);
 	}
 
 	/**
@@ -482,12 +482,12 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri);
 
-		requestUri = apiVersion+uri;
+		requestUri = this.apiVersion + uri;
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_POST_METHOD, requestUri, host, port, extraData);
-		response = post(urlString, header, input);
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_POST_METHOD, requestUri, this.host, this.port, this.extraData);
+		response = this.post(urlString, header, input);
 
 		if (response.getStatus() != Response.Status.CREATED.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -512,13 +512,13 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri);
 
-		requestUri = apiVersion+uri;
+		requestUri = this.apiVersion + uri;
 
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_GET_METHOD, requestUri, host, port, extraData);
-		response = get(urlString, header);
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
+		response = this.get(urlString, header);
 
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -545,14 +545,12 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id;
+		requestUri = this.apiVersion + uri + "/" + id;
 
-		urlString = urlString +"/"+id;
-		requestUri = apiVersion+uri+"/"+id;
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_GET_METHOD, requestUri, host, port, extraData);
-
-		response = get(urlString, header);
+		response = this.get(urlString, header);
 
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -577,14 +575,12 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id;
+		requestUri = this.apiVersion + uri + "/" + id;
 
-		urlString = urlString +"/"+id;
-		requestUri = apiVersion+uri+"/"+id;
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_GET_METHOD, requestUri, host, port, extraData);
-
-		response = get(urlString, header);
+		response = this.get(urlString, header);
 
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -609,14 +605,12 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, apiVersion, uri) + "/" + id;
+		requestUri = this.apiVersion + uri + "/" + id;
 
-		urlString = urlString +"/"+id;
-		requestUri = apiVersion+uri+"/"+id;
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_DELETE_METHOD, requestUri, this.host, this.port, this.extraData);
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_DELETE_METHOD, requestUri, host, port, extraData);
-
-		response = delete(urlString, header);
+		response = this.delete(urlString, header);
 
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -638,14 +632,12 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(protocol, host, port, apiVersion, uri);
+		urlString = this.smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" +id;
+		requestUri = this.apiVersion+uri+"/"+id;
 
-		urlString = urlString +"/"+id;
-		requestUri = apiVersion+uri+"/"+id;
+		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_DELETE_METHOD, requestUri, this.host, this.port, this.extraData);
 
-		header = smsglobalUtil.getAuthorizationHeader(apiKey, HTTP_DELETE_METHOD, requestUri, host, port, extraData);
-
-		response = delete(urlString, header);
+		response = this.delete(urlString, header);
 
 		if (response.getStatus() != Response.Status.OK.getStatusCode()) {
 			throw new SMSGlobalRestClientException("Failed : HTTP error code : "+ response.getStatus());
@@ -667,7 +659,7 @@ public class SMSGlobalRESTClient {
         }
 
 		ClientResponse response = null;
-		if(isDebug) {
+		if(this.isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
         }
 
@@ -696,7 +688,7 @@ public class SMSGlobalRESTClient {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 
-		if(isDebug) {
+		if(this.isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
         }
 
@@ -724,7 +716,7 @@ public class SMSGlobalRESTClient {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 
-		if(isDebug) {
+		if(this.isDebug) {
 			client.addFilter(new LoggingFilter(System.out));
         }
         
