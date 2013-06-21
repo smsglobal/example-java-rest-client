@@ -9,16 +9,15 @@ public class SMSGlobalRESTClientMain
             System.out.println("Please enter at least API Key and Secret String obtained from your MXT Account."); 
             System.exit(0);
         }
-
+        
         String apiKey = args[0];
         String secret = args[1];
         String extraData = "";
-        String protocol = "HTTPS";
         String host = "api.smsglobal.com";
-        int port = 443;
+        String protocol = (args.length > 2 && args[2].equalsIgnoreCase("true")) ? "HTTPS" : "HTTP";        
+        int port = (args.length > 2 && args[2].equalsIgnoreCase("true")) ? 443 : 80;        
+        boolean isDebug = (args.length > 3 && args[3].equalsIgnoreCase("true")) ? true : false;
         
-        boolean isDebug = (args.length > 2 && args[2].equalsIgnoreCase("true")) ? true : false;
-
         SMSGlobalRESTClient restClient = new SMSGlobalRESTClient(apiKey, secret, extraData, protocol, host, port, isDebug);
 
         /** Get Balance **/
