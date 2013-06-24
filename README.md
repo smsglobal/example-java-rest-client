@@ -1,4 +1,4 @@
-example-java-rest-client
+JAVA example client for SMS Global REST API
 ========================
 
 Requirements
