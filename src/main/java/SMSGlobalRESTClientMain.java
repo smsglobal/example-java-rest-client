@@ -22,16 +22,6 @@ public class SMSGlobalRESTClientMain
 
         /** Get Balance **/
         try {
-            System.out.println("== Balance ==");
-            String balanceJSON = restClient.getBalance();
-            JSONObject balance = JSONObject.fromObject(balanceJSON);
-            System.out.println("Credits: " + balance.get("credits"));
-            System.out.println("Country Code: " + balance.get("countryCode"));
-            System.out.println("Credits Per MMS: " + balance.get("creditsPerMms"));
-            System.out.println("Credits Per SMS: " + balance.get("credits"));
-            System.out.println("MMS Available: " + balance.get("mmsAvailable"));
-            System.out.println("SMS Available: " + balance.get("smsAvailable"));
-
             /** Child Accounts **/
             System.out.println("== Child Accounts ==\n" + restClient.getChildAccounts() + "\n");
 

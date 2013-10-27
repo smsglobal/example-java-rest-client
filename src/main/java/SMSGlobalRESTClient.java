@@ -514,7 +514,7 @@ public class SMSGlobalRESTClient {
 
 		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri);
 
-		requestUri = this.apiVersion + uri;
+		requestUri = this.apiVersion + uri + "/";
 
 
 		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
@@ -545,8 +545,8 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id;
-		requestUri = this.apiVersion + uri + "/" + id;
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id + "/";
+		requestUri = this.apiVersion + uri + "/" + id + "/";
 
 		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
 
@@ -575,8 +575,8 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id;
-		requestUri = this.apiVersion + uri + "/" + id;
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" + id + "/";
+		requestUri = this.apiVersion + uri + "/" + id + "/";
 
 		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_GET_METHOD, requestUri, this.host, this.port, this.extraData);
 
@@ -605,8 +605,8 @@ public class SMSGlobalRESTClient {
 
 		ClientResponse response = null;
 
-		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, apiVersion, uri) + "/" + id;
-		requestUri = this.apiVersion + uri + "/" + id;
+		urlString = smsglobalUtil.constructURL(this.protocol, this.host, this.port, apiVersion, uri) + "/" + id + "/";
+		requestUri = this.apiVersion + uri + "/" + id + "/";
 
 		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_DELETE_METHOD, requestUri, this.host, this.port, this.extraData);
 
@@ -633,7 +633,7 @@ public class SMSGlobalRESTClient {
 		ClientResponse response = null;
 
 		urlString = this.smsglobalUtil.constructURL(this.protocol, this.host, this.port, this.apiVersion, uri) + "/" +id;
-		requestUri = this.apiVersion+uri+"/"+id;
+		requestUri = this.apiVersion + uri + "/" + id + "/";
 
 		header = smsglobalUtil.getAuthorizationHeader(this.apiKey, HTTP_DELETE_METHOD, requestUri, this.host, this.port, this.extraData);
 
